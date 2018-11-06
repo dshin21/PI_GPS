@@ -1,18 +1,18 @@
 /*------------------------------------------------------------------------------------------------------------------
 -- SOURCE FILE: gpsprint.c - 
 --                             
--- PROGRAM: 
+-- PROGRAM: dcgps
 --
 -- FUNCTIONS: 
 --		   
 --
--- DATE: November 12, 2018
+-- DATE: November 2, 2018
 --
 -- REVISIONS: None
 --
--- DESIGNER: 
+-- DESIGNER: Daniel Shin
 --
--- PROGRAMMER: 
+-- PROGRAMMER: Daniel Shin
 --
 -- NOTES:
 --		
@@ -22,15 +22,15 @@
 /*------------------------------------------------------------------------------------------------------------------
 -- FUNCTION: print_gps_information
 --
--- DATE: November 12, 2018
+-- DATE: November 2, 2018
 --
 -- REVISIONS: None
 --
--- DESIGNER: Daniel Shin, Simon Chen
+-- DESIGNER: Daniel Shin
 --
 -- PROGRAMMER: Daniel Shin
 --
--- INTERFACE: void print_gps_information()
+-- INTERFACE: void print_gps_information(struct gps_data_t *gps_data)
 --
 -- RETURNS: void
 --
@@ -74,11 +74,11 @@ void print_gps_information(struct gps_data_t *gps_data)
 /*------------------------------------------------------------------------------------------------------------------
 -- FUNCTION: print_satellite_information
 --
--- DATE: November 12, 2018
+-- DATE: November 2, 2018
 --
 -- REVISIONS: None
 --
--- DESIGNER: Daniel Shin, Simon Chen
+-- DESIGNER: Daniel Shin
 --
 -- PROGRAMMER: Daniel Shin
 --

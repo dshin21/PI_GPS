@@ -1,17 +1,36 @@
-#include "gps-utils.h"
-
 /*------------------------------------------------------------------------------------------------------------------
--- FUNCTION: main
+-- SOURCE FILE: gps-utils.c - 
+--                             
+-- PROGRAM: dcgps
 --
--- DATE: November 12, 2018
+-- FUNCTIONS: 
+--		   
+--
+-- DATE: November 4, 2018
 --
 -- REVISIONS: None
 --
--- DESIGNER: Daniel Shin, Simon Chen
+-- DESIGNER: Simon Chen, Daniel Shin
 --
 -- PROGRAMMER: Simon Chen
 --
--- INTERFACE: int main(void)
+-- NOTES:
+--		
+----------------------------------------------------------------------------------------------------------------------*/
+#include "gps-utils.h"
+
+/*------------------------------------------------------------------------------------------------------------------
+-- FUNCTION: search
+--
+-- DATE: November 4, 2018
+--
+-- REVISIONS: None
+--
+-- DESIGNER: Simon Chen, Daniel Shin 
+--
+-- PROGRAMMER: Simon Chen
+--
+-- INTERFACE: search(struct gps_data_t *gps_data)
 --
 -- RETURNS: int
 --
@@ -23,34 +42,29 @@ int search(struct gps_data_t *gps_data)
     pthread_t thread_id;
     pthread_create(&thread_id, NULL, checkInput, NULL);
 
-    while (true)
-    {
-        if (!gps_waiting(gps_data, 5000000))
-        {
+    while (true) {
+        if (!gps_waiting(gps_data, 5000000)) {
             errorHandler(TIMEOUT);
             return -1;
         }
-        else if (gps_read(gps_data) == -1)
-        {
+        else if (gps_read(gps_data) == -1) {
             errorHandler(READ_FAIL);
             return -1;
         }
-        else if (inputTracker)
-        {
+        else if (inputTracker) {
             printf("User terminating program.");
             return -1;
         }
-        else
-        {
+        else {
             print_gps_information(gps_data);
         }
     }
 }
 
 /*------------------------------------------------------------------------------------------------------------------
--- FUNCTION: main
+-- FUNCTION: flush
 --
--- DATE: November 12, 2018
+-- DATE: November 4, 2018
 --
 -- REVISIONS: None
 --
@@ -58,9 +72,9 @@ int search(struct gps_data_t *gps_data)
 --
 -- PROGRAMMER: Daniel Shin
 --
--- INTERFACE: int main(void)
+-- INTERFACE: void flush(struct gps_data_t *gps_data)
 --
--- RETURNS: int
+-- RETURNS: void
 --
 -- NOTES:
 --		
@@ -73,19 +87,19 @@ void flush(struct gps_data_t *gps_data)
 }
 
 /*------------------------------------------------------------------------------------------------------------------
--- FUNCTION: main
+-- FUNCTION: checkInput
 --
--- DATE: November 12, 2018
+-- DATE: November 4, 2018
 --
 -- REVISIONS: None
 --
--- DESIGNER: Daniel Shin, Simon Chen
+-- DESIGNER: Simon Chen
 --
--- PROGRAMMER: Daniel Shin
+-- PROGRAMMER: Simon Chen
 --
--- INTERFACE: int main(void)
+-- INTERFACE: void *checkInput()
 --
--- RETURNS: int
+-- RETURNS: void*
 --
 -- NOTES:
 --		
@@ -104,24 +118,25 @@ void *checkInput()
 }
 
 /*------------------------------------------------------------------------------------------------------------------
--- FUNCTION: main
+-- FUNCTION: errorHandler
 --
--- DATE: November 12, 2018
+-- DATE: November 4, 2018
 --
 -- REVISIONS: None
 --
--- DESIGNER: Daniel Shin, Simon Chen
+-- DESIGNER: Simon Chen
 --
--- PROGRAMMER: Daniel Shin
+-- PROGRAMMER: Simon Chen
 --
--- INTERFACE: int main(void)
+-- INTERFACE: void errorHandler(int errorNumber)
 --
--- RETURNS: int
+-- RETURNS: void
 --
 -- NOTES:
 --		
 ----------------------------------------------------------------------------------------------------------------------*/
-void errorHandler(int errorNumber){
+void errorHandler(int errorNumber)
+{
     switch(errorNumber){
     case -2:
         printf("GPS device timedout\n");

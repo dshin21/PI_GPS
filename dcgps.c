@@ -1,18 +1,18 @@
 /*------------------------------------------------------------------------------------------------------------------
 -- SOURCE FILE: dcgps.c - 
 --                             
--- PROGRAM: 
+-- PROGRAM: dcgps
 --
 -- FUNCTIONS: 
 --		   
 --
--- DATE: November 12, 2018
+-- DATE: November 4, 2018
 --
 -- REVISIONS: None
 --
--- DESIGNER: 
+-- DESIGNER: Daniel Shin, Simon Chen
 --
--- PROGRAMMER: 
+-- PROGRAMMER: Daniel Shin
 --
 -- NOTES:
 --		
@@ -22,7 +22,7 @@
 /*------------------------------------------------------------------------------------------------------------------
 -- FUNCTION: main
 --
--- DATE: November 12, 2018
+-- DATE: November 4, 2018
 --
 -- REVISIONS: None
 --
@@ -62,7 +62,6 @@ int main(void)
         flush(gps_data);
         return -1;
     }
-
 
     if (search(gps_data) == -1)
         flush(gps_data);
