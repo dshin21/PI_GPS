@@ -50,8 +50,7 @@ int main(void)
     printf("Connecting to GPS Device\n\n");
     if (gps_open(source.server, source.port, gps_data) != 0)
     {
-        errorHandler(CONNECTION_FAIL);
-        flush(gps_data);
+        errorHandler(CONNECTION_FAIL, gps_data);
         return -1;
     }
 
@@ -62,13 +61,12 @@ int main(void)
 
     if (gps_stream(gps_data, flags, NULL) == -1)
     {
-        errorHandler(STREAM_FAIL);
-        flush(gps_data);
+        errorHandler(STREAM_FAIL, gps_data);
         return -1;
     }
 
     if (search(gps_data) == -1)
-        flush(gps_data);
+        errorHandler(-1, gps_data);
 
     return 0;
 }

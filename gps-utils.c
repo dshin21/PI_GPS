@@ -154,16 +154,17 @@ void *checkInput()
 --
 -- PROGRAMMER: Simon Chen
 --
--- INTERFACE: void errorHandler(int errorNumber)
+-- INTERFACE: void errorHandler(int errorNumber, struct gps_data_t *gps_data)
 --              int errorNumber: represents the type of the error that had occurred
+--              struct gps_data_t *gps_data : pointer to the gps_data_t structure
 --
 -- RETURNS: void
 --
 -- NOTES:
 -- This function is responsible for informing the user about the error that had occured by printing a message 
--- corresponding to the errors. 
+-- corresponding to the error and releases all resources acquired. 
 ----------------------------------------------------------------------------------------------------------------------*/
-void errorHandler(int errorNumber)
+void errorHandler(int errorNumber, struct gps_data_t *gps_data)
 {
     switch (errorNumber)
     {
@@ -181,6 +182,7 @@ void errorHandler(int errorNumber)
         printf("\033[0;31m\nerror streaming to GPS device\n");
         break;
     default:
+        flush(gps_data);
         break;
     }
 }
