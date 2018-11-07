@@ -6,8 +6,6 @@
 #define STREAM_FAIL -5
 #define USER_TERMINATED 1;
 
-int inputTracker = 0;
-
 #include <gps.h>
 #include <stdlib.h>
 #include "gpsprint.h"
