@@ -61,12 +61,12 @@ int search(struct gps_data_t *gps_data)
     {
         if (!gps_waiting(gps_data, 5000000))
         {
-            errorHandler(TIMEOUT);
+            errorHandler(TIMEOUT, gps_data);
             return -1;
         }
         else if (gps_read(gps_data) == -1)
         {
-            errorHandler(READ_FAIL);
+            errorHandler(READ_FAIL, gps_data);
             return -1;
         }
         else if (inputTracker)

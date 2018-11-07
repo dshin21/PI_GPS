@@ -15,4 +15,4 @@
 int search(struct gps_data_t *gps_data);
 void flush(struct gps_data_t *gps_data);
 void *checkInput();
-void errorHandler(int errorNumber);
+void errorHandler(int errorNumber, struct gps_data_t *gps_data);
