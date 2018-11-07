@@ -1,4 +1,3 @@
-//dcgps.h
 #pragma once
 
 #include <gps.h>
